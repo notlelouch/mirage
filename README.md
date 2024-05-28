@@ -81,10 +81,6 @@ Replace <Whitelist Contract Address> with your actual Whitelist contract address
 - Connect your wallet on Etherscan.
 - Call mint with payableAmount as 0.01.
 
-## Conclusion
-
-With Mirage, you now have a secure, robust NFT collection with a whitelist system ensuring early supporters get rewarded. Enjoy launching your Crypto Devs NFTs!
-
 ## License
 This project is licensed under the MIT License.
 
