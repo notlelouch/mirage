@@ -19,13 +19,13 @@ Mirage is an innovative NFT collection named Crypto Devs that ensures early supp
 
 ## Setup
 
-#1. Clone the repository to your local machine
+# 1. Clone the repository to your local machine
 
    ```bash
     git clone https://github.com/<your-username>/mirage.git
     cd mirage
    ```
-#2. Set Up Environment Variables
+# 2. Set Up Environment Variables
 
   Create a .env file in foundry-app:
   
@@ -38,7 +38,7 @@ Mirage is an innovative NFT collection named Crypto Devs that ensures early supp
   QUICKNODE_RPC_URL: QuickNode HTTP Provider link.  
   ETHERSCAN_API_KEY: Etherscan API key.
 
-#3. Deploy the Whitelist Contract
+# 3. Deploy the Whitelist Contract
 
   Load environment variables:
 
@@ -50,7 +50,7 @@ Mirage is an innovative NFT collection named Crypto Devs that ensures early supp
     forge create --rpc-url $QUICKNODE_RPC_URL --private-key $PRIVATE_KEY --constructor-args 10 --etherscan-api-key $ETHERSCAN_API_KEY --verify src/Whitelist.sol:Whitelist
 ```
 
-#4. Add Users to the Whitelist
+# 4. Add Users to the Whitelist
 
 Interact with the deployed contract on Etherscan:
 
@@ -60,7 +60,7 @@ Interact with the deployed contract on Etherscan:
 - Connect your wallet.
 - Call `addAddressToWhitelist`.
 
-#5. Deploy the NFT Contract
+# 5. Deploy the NFT Contract
 
 Deploy the CryptoDevs contract:
 
@@ -69,14 +69,14 @@ forge create --rpc-url $QUICKNODE_RPC_URL --private-key $PRIVATE_KEY --construct
 ```
 Replace <Whitelist Contract Address> with your actual Whitelist contract address.
 
-#6. Test Whitelisted Mint
+# 6. Test Whitelisted Mint
 
 - Open the NFT contract on Sepolia Etherscan.
 - Go to the "Write Contract" tab.
 - Connect your wallet.
 - Call mint with payableAmount as 0.
 
-#7. Test Non-Whitelisted Mint
+# 7. Test Non-Whitelisted Mint
 
 - Switch to a non-whitelisted account.
 - Connect your wallet on Etherscan.
