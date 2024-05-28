@@ -1,67 +1,94 @@
-## Foundry
+# Mirage: An NFT Collection with Whitelist using Hardhat and Solidity
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Mirage is an innovative NFT collection named Crypto Devs that ensures early supporters have guaranteed access to minting NFTs. Using Hardhat and Solidity, Mirage incorporates a whitelist dApp allowing the first ten users to mint NFTs for free. This project is built with security in mind, ensuring that sensitive information like private keys is handled appropriately during development.
 
-Foundry consists of:
+## Features
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- **Whitelist System:** Early supporters can join the whitelist to get guaranteed access to mint NFTs.
+- **Free Minting for Whitelisted Users:** The first ten users on the whitelist can mint NFTs for free.
+- **Paid Minting for Others:** Users not on the whitelist can mint NFTs by paying a specified fee.
+- **Max Token Limit:** The total supply of Crypto Devs NFTs is capped at 20.
 
-## Documentation
+## Prerequisites
+- Hardhat
+- Solidity
+- Foundry
+- MetaMask
+- QuickNode account
+- Etherscan account
 
-https://book.getfoundry.sh/
+## Setup
 
-## Usage
+#1. Clone the repository to your local machine
 
-### Build
+   ```bash
+    git clone https://github.com/<your-username>/mirage.git
+    cd mirage
+   ```
+#2. Set Up Environment Variables
 
-```shell
-$ forge build
+  Create a .env file in foundry-app:
+  
+   ```bash
+    PRIVATE_KEY="..."
+    QUICKNODE_RPC_URL="..."
+    ETHERSCAN_API_KEY="..."
+   ```
+  PRIVATE_KEY: Exported from MetaMask.
+  QUICKNODE_RPC_URL: QuickNode HTTP Provider link.  
+  ETHERSCAN_API_KEY: Etherscan API key.
+
+#3. Deploy the Whitelist Contract
+
+  Load environment variables:
+
+  ```bash
+    source .env
+   ```
+  Deploy the contract:
+  ```bash
+    forge create --rpc-url $QUICKNODE_RPC_URL --private-key $PRIVATE_KEY --constructor-args 10 --etherscan-api-key $ETHERSCAN_API_KEY --verify src/Whitelist.sol:Whitelist
 ```
 
-### Test
+#4. Add Users to the Whitelist
 
-```shell
-$ forge test
+Interact with the deployed contract on Etherscan:
+
+- Go to Sepolia Etherscan.
+- Search for your contract address.
+- Under the "Contract" tab, go to "Write Contract".
+- Connect your wallet.
+- Call `addAddressToWhitelist`.
+
+#5. Deploy the NFT Contract
+
+Deploy the CryptoDevs contract:
+
+```bash
+forge create --rpc-url $QUICKNODE_RPC_URL --private-key $PRIVATE_KEY --constructor-args <Whitelist Contract Address> --etherscan-api-key $ETHERSCAN_API_KEY --verify src/CryptoDevs.sol:CryptoDevs
 ```
+Replace <Whitelist Contract Address> with your actual Whitelist contract address.
 
-### Format
+#6. Test Whitelisted Mint
 
-```shell
-$ forge fmt
-```
+- Open the NFT contract on Sepolia Etherscan.
+- Go to the "Write Contract" tab.
+- Connect your wallet.
+- Call mint with payableAmount as 0.
 
-### Gas Snapshots
+#7. Test Non-Whitelisted Mint
 
-```shell
-$ forge snapshot
-```
+- Switch to a non-whitelisted account.
+- Connect your wallet on Etherscan.
+- Call mint with payableAmount as 0.01.
 
-### Anvil
+## Conclusion
 
-```shell
-$ anvil
-```
+With Mirage, you now have a secure, robust NFT collection with a whitelist system ensuring early supporters get rewarded. Enjoy launching your Crypto Devs NFTs!
 
-### Deploy
+## License
+This project is licensed under the MIT License.
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+## Contributing
 
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
-# mirage
+Contributions are welcome! If you have ideas for improvements, new features, or bug fixes, please open an issue or submit a pull request.
