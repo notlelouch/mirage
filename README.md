@@ -10,7 +10,6 @@ Mirage is an innovative NFT collection named Crypto Devs that ensures early supp
 - **Max Token Limit:** The total supply of Crypto Devs NFTs is capped at 20.
 
 ## Prerequisites
-- Hardhat
 - Solidity
 - Foundry
 - MetaMask
