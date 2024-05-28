@@ -1,4 +1,4 @@
-# Mirage: An NFT Collection with Whitelist using Hardhat and Solidity
+# Mirage: An NFT Collection with Whitelist using foundry and Solidity
 
 Mirage is an innovative NFT collection named Crypto Devs that ensures early supporters have guaranteed access to minting NFTs. Using Hardhat and Solidity, Mirage incorporates a whitelist dApp allowing the first ten users to mint NFTs for free. This project is built with security in mind, ensuring that sensitive information like private keys is handled appropriately during development.
 
